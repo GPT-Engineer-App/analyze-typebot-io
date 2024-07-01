@@ -1,122 +1,120 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { Button, Card, CardBody, CardHeader, CardFooter, Tabs, TabList, TabPanels, Tab, TabPanel, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Tooltip, Avatar, AvatarBadge, AvatarGroup, Badge, Divider, Box, Heading, Text, VStack, HStack, Container, Flex, Spacer } from "@chakra-ui/react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center">
-      <header className="w-full bg-white shadow">
-        <div className="container mx-auto py-6 px-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Typebot.io Clone</h1>
-          <nav>
-            <Button variant="outline" className="mr-2">Home</Button>
-            <Button variant="outline" className="mr-2">Features</Button>
-            <Button variant="outline" className="mr-2">Pricing</Button>
-            <Button variant="outline">Contact</Button>
-          </nav>
-        </div>
-      </header>
+    <Box minH="100vh" bg="gray.50">
+      <Box as="header" w="full" bg="white" boxShadow="sm">
+        <Container maxW="container.xl" py={6} px={4}>
+          <Flex justify="space-between" align="center">
+            <Heading as="h1" size="lg">Typebot.io Clone</Heading>
+            <HStack spacing={4}>
+              <Button variant="outline">Home</Button>
+              <Button variant="outline">Features</Button>
+              <Button variant="outline">Pricing</Button>
+              <Button variant="outline">Contact</Button>
+            </HStack>
+          </Flex>
+        </Container>
+      </Box>
 
-      <main className="container mx-auto py-10 px-4">
-        <section className="text-center mb-10">
-          <h2 className="text-4xl font-bold mb-4">Welcome to Typebot.io Clone</h2>
-          <p className="text-lg mb-6">Create interactive conversational experiences with ease.</p>
-          <Button variant="primary" size="lg">Get Started</Button>
-        </section>
+      <Container as="main" maxW="container.xl" py={10} px={4}>
+        <VStack spacing={10}>
+          <Box textAlign="center">
+            <Heading as="h2" size="2xl" mb={4}>Welcome to Typebot.io Clone</Heading>
+            <Text fontSize="lg" mb={6}>Create interactive conversational experiences with ease.</Text>
+            <Button colorScheme="teal" size="lg">Get Started</Button>
+          </Box>
 
-        <section className="mb-10">
           <Card>
             <CardHeader>
-              <CardTitle>Features</CardTitle>
+              <Heading size="md">Features</Heading>
             </CardHeader>
-            <CardContent>
-              <Tabs defaultValue="feature1">
-                <TabsList>
-                  <TabsTrigger value="feature1">Feature 1</TabsTrigger>
-                  <TabsTrigger value="feature2">Feature 2</TabsTrigger>
-                  <TabsTrigger value="feature3">Feature 3</TabsTrigger>
-                </TabsList>
-                <TabsContent value="feature1">
-                  <p>Feature 1 content goes here.</p>
-                </TabsContent>
-                <TabsContent value="feature2">
-                  <p>Feature 2 content goes here.</p>
-                </TabsContent>
-                <TabsContent value="feature3">
-                  <p>Feature 3 content goes here.</p>
-                </TabsContent>
+            <CardBody>
+              <Tabs variant="enclosed">
+                <TabList>
+                  <Tab>Feature 1</Tab>
+                  <Tab>Feature 2</Tab>
+                  <Tab>Feature 3</Tab>
+                </TabList>
+                <TabPanels>
+                  <TabPanel>
+                    <Text>Feature 1 content goes here.</Text>
+                  </TabPanel>
+                  <TabPanel>
+                    <Text>Feature 2 content goes here.</Text>
+                  </TabPanel>
+                  <TabPanel>
+                    <Text>Feature 3 content goes here.</Text>
+                  </TabPanel>
+                </TabPanels>
               </Tabs>
-            </CardContent>
+            </CardBody>
           </Card>
-        </section>
 
-        <section className="mb-10">
-          <Accordion type="single" collapsible>
-            <AccordionItem value="item-1">
-              <AccordionTrigger>Is it accessible?</AccordionTrigger>
-              <AccordionContent>
+          <Accordion allowToggle>
+            <AccordionItem>
+              <AccordionButton>
+                <Box flex="1" textAlign="left">
+                  Is it accessible?
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+              <AccordionPanel pb={4}>
                 Yes. It adheres to the WAI-ARIA design pattern.
-              </AccordionContent>
+              </AccordionPanel>
             </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>Is it customizable?</AccordionTrigger>
-              <AccordionContent>
+
+            <AccordionItem>
+              <AccordionButton>
+                <Box flex="1" textAlign="left">
+                  Is it customizable?
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+              <AccordionPanel pb={4}>
                 Yes. You can customize it as per your needs.
-              </AccordionContent>
+              </AccordionPanel>
             </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Is it free to use?</AccordionTrigger>
-              <AccordionContent>
+
+            <AccordionItem>
+              <AccordionButton>
+                <Box flex="1" textAlign="left">
+                  Is it free to use?
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+              <AccordionPanel pb={4}>
                 Yes. It is free for personal and commercial use.
-              </AccordionContent>
+              </AccordionPanel>
             </AccordionItem>
           </Accordion>
-        </section>
 
-        <section className="mb-10">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <Button variant="outline">Hover me</Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>This is a tooltip content.</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </section>
+          <Tooltip label="This is a tooltip content." aria-label="A tooltip">
+            <Button variant="outline">Hover me</Button>
+          </Tooltip>
 
-        <section className="mb-10">
-          <div className="flex items-center space-x-4">
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+          <HStack spacing={4}>
+            <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
             <Badge variant="outline">Badge</Badge>
-          </div>
-        </section>
+          </HStack>
 
-        <Separator className="my-10" />
+          <Divider />
 
-        <section className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
-          <p className="text-lg mb-6">Feel free to reach out for any queries.</p>
-          <Button variant="primary">Contact Support</Button>
-        </section>
-      </main>
+          <Box textAlign="center">
+            <Heading as="h2" size="xl" mb={4}>Contact Us</Heading>
+            <Text fontSize="lg" mb={6}>Feel free to reach out for any queries.</Text>
+            <Button colorScheme="teal">Contact Support</Button>
+          </Box>
+        </VStack>
+      </Container>
 
-      <footer className="w-full bg-white shadow py-6">
-        <div className="container mx-auto text-center">
-          <p>&copy; 2023 Typebot.io Clone. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
+      <Box as="footer" w="full" bg="white" boxShadow="sm" py={6}>
+        <Container maxW="container.xl" textAlign="center">
+          <Text>&copy; 2023 Typebot.io Clone. All rights reserved.</Text>
+        </Container>
+      </Box>
+    </Box>
   );
 };
 
